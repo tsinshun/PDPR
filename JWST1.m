@@ -2,7 +2,7 @@
 % author: Shun Qin, PhD, University of G?ttingen
 % Email: shun.qin@outlook.com
 % reference: 
-% [1] Shun Qin,et al.,A Tip¨CTilt and Piston Detection Approach for
+% [1] Shun Qin,et al.,A Tipâ€“Tilt and Piston Detection Approach for
 %     Segmented Telescopes,Photonics, 8(1), 3, 2021.
 %
 % sample and comments: 
@@ -16,21 +16,21 @@
 function W=JWST1(Dia,gap,nring,times,N)
 
 [x,y]=meshgrid(-times*Dia/2:Dia/(N-1):times*Dia/2,times*Dia/2:-Dia/(N-1):-times*Dia/2);%
-D=Dia/(nring+sqrt(3)/3)/2;%Á½×Ó¾µÖ®¼äÖÐÐÄµÄ¾àÀë
-d=D/sqrt(3);%Á½·äÎÑÔª¼äµÄ¾àÀë±ÈÀýÏµÊý
+D=Dia/(nring+sqrt(3)/3)/2;%ä¸¤å­é•œä¹‹é—´ä¸­å¿ƒçš„è·ç¦»
+d=D/sqrt(3);%ä¸¤èœ‚çªå…ƒé—´çš„è·ç¦»æ¯”ä¾‹ç³»æ•°
 co=(D/2-gap/2)/(sqrt(3)/2);
 %z=singleface(30,30,x,y);
 %surf(x,y,z); 
-c=hexaggon(nring);%È¡·äÎÑÆ½ÃæµÄ×ø±ê
+c=hexaggon(nring);%å–èœ‚çªå¹³é¢çš„åæ ‡
 %surf(x,y,z);
-num=length(c);%ÖÆ¶¯Æ÷µÄ¸öÊý,²»°üÀ¨ÖÐÐÄÄÇ¸ö
+num=length(c);%åˆ¶åŠ¨å™¨çš„ä¸ªæ•°,ä¸åŒ…æ‹¬ä¸­å¿ƒé‚£ä¸ª
 % central=polygon(x,y,co,[0 0]);
 % for i=1:L;
 % central=polygon(x,y,co,c{i}*d) | central;
 % end
-lamda=632.8e-9;%µ¥Î»m
+lamda=632.8e-9;%å•ä½m
 
-
+% A, B, C store the slopes with respective to 3 axises of all segments
 A0=0.1*lamda/D;A=normrnd(0,A0/2,num+1,1);A=tan(A);%A=0;
 B0=0.1*lamda/D;B=normrnd(0,B0/2,num+1,1);B=tan(B);%B=0;
 C0=100e-9;C=normrnd(0,C0/2,num+1,1);%C=0;
@@ -62,8 +62,8 @@ W=(W-sum(sum(W))/sum(sum(W(:,:)~=0)));
 % SR=maxv/maxv0
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% »­Ò»¸öÁù±ßÐÎ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function z=polygon(x,y,A,B,C,co,vector)%c±ÈÀýÏµÊýÔ­ÐÍÊÇµ¥Î»Ò»µÄÁù±ßÐÎ£¬³Ë´ËÏµÊýµÃÊµ¼ÊÖµ vectorÎªÆ½ÒÆÏòÁ¿
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% ç”»ä¸€ä¸ªå…­è¾¹å½¢ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function z=polygon(x,y,A,B,C,co,vector)%cæ¯”ä¾‹ç³»æ•°åŽŸåž‹æ˜¯å•ä½ä¸€çš„å…­è¾¹å½¢ï¼Œä¹˜æ­¤ç³»æ•°å¾—å®žé™…å€¼ vectorä¸ºå¹³ç§»å‘é‡
 k=sqrt(3);
 x=x-vector(1);y=y+vector(2);
 z1=A*x+B*y+C;
@@ -71,7 +71,7 @@ z0=( y>=-k*co/2 & y<=k*co/2 & y<k*x+k*co & y<-k*x+k*co & y>-k*x-k*co & y>k*x-k*c
 z=double(z0).*z1;
 %surf(x,y,z);
 
-function  v=hexaggon(n0)%n0ÎªÈ¦Êýv(k+6*(n-1))=
+function  v=hexaggon(n0)%n0ä¸ºåœˆæ•°v(k+6*(n-1))=
 if n0==0
     v=cell(1,1);
     v{1}=[0 0];
@@ -91,7 +91,7 @@ for n=1:n0
     end
 end
 
-function  A=cores(n,k)%nÈ¦ µÚk¸öÁù±ßÐÎÖÐÐÄ
+function  A=cores(n,k)%nåœˆ ç¬¬kä¸ªå…­è¾¹å½¢ä¸­å¿ƒ
 i=floor(abs((k+n-1)/n));
 A=(n-(k-(i-1)*n-1))*core1(i)+(k-(i-1)*n-1)*core1(i+1);
 function central=core1(k)
