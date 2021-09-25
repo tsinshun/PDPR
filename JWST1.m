@@ -30,7 +30,9 @@ num=length(c);%制动器的个数,不包括中心那个
 % end
 lamda=632.8e-9;%单位m
 
-% A, B, C store the slopes with respective to 3 axises of all segments
+% A, B store the slopes with respective to x,y axises and
+% C stores the piston of all segments
+
 A0=0.1*lamda/D;A=normrnd(0,A0/2,num+1,1);A=tan(A);%A=0;
 B0=0.1*lamda/D;B=normrnd(0,B0/2,num+1,1);B=tan(B);%B=0;
 C0=100e-9;C=normrnd(0,C0/2,num+1,1);%C=0;
