@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% author: Shun Qin, PhD, University of G?ttingen
+% author: Shun Qin, PhD, University of Goettingen
 % Email: shun.qin@outlook.com
 % reference: 
 % [1] Shun Qin,et al.,A Tip–Tilt and Piston Detection Approach for
